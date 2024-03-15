@@ -86,29 +86,23 @@ Ansible modules are reusable, standalone scripts that perform specific tasks on 
 
 Here are a few examples of Ansible modules in action:
 
-Shell Module:
-  Execute a shell command on remote hosts.
-  ansible -m shell -a "ls -l" target_server
+Shell Module: Execute a shell command on remote hosts.
+ansible -m shell -a "ls -l" target_server
 
-Copy Module:
-  Copy a file from the local machine to remote hosts.
-  ansible -m copy -a "src=/path/to/local/file.txt dest=/remote/path/" webservers
+Copy Module: Copy a file from the local machine to remote hosts.
+ansible -m copy -a "src=/path/to/local/file.txt dest=/remote/path/" webservers
 
-Service Module:
-  Ensure a service is running on remote hosts.
-  ansible -m service -a "name=apache2 state=started" target_server
+Service Module: Ensure a service is running on remote hosts.
+ansible -m service -a "name=apache2 state=started" target_server
 
-Package Module:
-  Ensure a package is installed on remote hosts.
-  ansible -m package -a "name=nginx state=present" target_server
+Package Module: Ensure a package is installed on remote hosts.
+ansible -m package -a "name=nginx state=present" target_server
 
-User Module:
-  Create a user on remote hosts.
-  ansible -m user -a "name=johndoe password=<encrypted_password>" target_server
+User Module: Create a user on remote hosts.
+ansible -m user -a "name=johndoe password=<encrypted_password>" target_server
 
-File Module:
-  Ensure a file exists or absent on remote hosts.
-  ansible -m file -a "path=/path/to/file state=present" target_server
+File Module: Ensure a file exists or absent on remote hosts.
+ansible -m file -a "path=/path/to/file state=present" target_server
 
 ## What is an Ansible Playbook
 An Ansible playbook is a YAML-formatted file that defines a set of tasks to be executed on remote hosts in an infrastructure automation scenario. Playbooks are a fundamental component of Ansible, an open-source automation tool. Each playbook consists of one or more plays, where each play is a set of tasks executed on a specific group of hosts. Tasks, written in YAML syntax, define the desired state of the system by specifying actions such as installing packages, configuring settings, or performing other operations.
