@@ -38,7 +38,7 @@ ansible --version
 
 ![Screenshot (526)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/49d56785-2604-4906-9d6d-b8fc0e5ce331)
 
-![Screenshot (530)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/463758d7-c399-48e1-871c-e1f6899bfcfb)
+![Screenshot (538)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/a3f343fe-77ff-4869-a9b9-d2edfcbf31b6)
 
 ## What is Ansible Inventory File
 In Ansible, an inventory file is a text file that contains the list of hosts(remote servers) that Ansible can manage. The inventory file is used to define and organize the hosts into groups and assign variables to them. Ansible uses this to determine the target hosts for running plays and tasks.
@@ -170,6 +170,20 @@ Then insert the codes below:
       register: app_status
     - debug: msg={{app_status.stdout_lines}}
 ```
+
+Execute the playbook using the command below:
+```
+ansible-playbook -i hosts node-deploy.yaml
+```
+
+![Screenshot (535)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/18a498f4-7035-45e2-a27c-8b0e04a56516)
+
+![Screenshot (536)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/07537a57-9e21-44cf-80fd-c48b26c5b602)
+
+![Screenshot (539)](https://github.com/kenchuks44/Node-App-Deployment-with-Ansible/assets/88329191/1af7b4bf-71c6-474d-b727-1d5d8f9a57e2)
+
+## Congratulations
+
 
 
 
