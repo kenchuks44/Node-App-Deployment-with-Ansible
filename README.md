@@ -86,8 +86,9 @@ Ansible modules are reusable, standalone scripts that perform specific tasks on 
 
 Here are a few examples of Ansible modules in action:
 
-Shell Module: Execute a shell command on remote hosts.
-ansible -m shell -a "ls -l" target_server
+Shell Module: 
+- Execute a shell command on remote hosts.
+- ansible -m shell -a "ls -l" target_server
 
 Copy Module: Copy a file from the local machine to remote hosts.
 ansible -m copy -a "src=/path/to/local/file.txt dest=/remote/path/" webservers
