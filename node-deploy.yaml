@@ -1,0 +1,50 @@
+---
+- name: Install node and npm
+  become: yes
+  hosts: target_server
+  tasks:
+    - name: Update apt repo and cache
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+    - name: Install nodejs and npm
+      apt:
+        pkg:
+          - nodejs
+          - npm
+          - acl
+
+- name: Create new linux user for node app
+  become: yes
+  hosts: target_server
+  tasks:
+    - name: Create user
+      user:
+        name: ken
+        comment: Ken Admin
+        group: admin
+
+- name: Deploy nodejs app
+  hosts: target_server
+  become: yes
+  become_user: ken
+  vars_files:
+    - project-vars
+  tasks:
+    - name: Copy nodejs file
+      ansible.builtin.copy:
+        src: "/home/ken/simple-nodejs-master.tar"
+        dest: "{{ user_home_dir }}"
+    - name: Unpack nodejs tar file
+      ansible.builtin.command: tar -xf "{{ user_home_dir }}/simple-nodejs-master.tar" -C /home/ken
+    - name: Install dependencies
+      npm:
+        path: /home/ken/package
+    - name: Start node application
+      command:
+        chdir: /home/ken/package/app
+        cmd: node server
+      async: 1000
+      poll: 0
+    - name: Ensure app is running
+      shell: ps aux | grep node
+      register: app_status
+    - debug: msg={{app_status}}
